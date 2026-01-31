@@ -1,0 +1,1239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Hope & Impact | Changing Children's Lives</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .main-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Hero Video Section */
+        .hero-section {
+            position: relative;
+            height: 100vh;
+            min-height: 500px;
+            overflow: hidden;
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: calc(100vh - 70px);
+            }
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(125deg, rgba(230, 126, 34, 0.85) 5%, rgba(211, 84, 0, 0.65) 50%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-down {
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .delay-600 {
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        /* Mobile Bottom Navigation */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(100%);
+            }
+            to {
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: flex;
+            }
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 8px;
+            color: #666;
+            text-decoration: none;
+            font-size: 11px;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-item i {
+            font-size: 22px;
+            margin-bottom: 4px;
+            transition: all 0.3s;
+        }
+
+        .nav-item.active {
+            color: #e67e22;
+        }
+
+        .nav-item.active i {
+            transform: scale(1.1);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: #e67e22;
+            color: white;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #e67e22;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid white;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.9);
+            transform: translateY(-2px);
+        }
+
+        /* Popup Modal */
+        .popup-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            padding: 20px;
+        }
+
+        .popup-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .popup-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .popup-modal.active .popup-content {
+            transform: scale(1);
+            animation: bounceIn 0.5s ease-out;
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        .popup-close:hover {
+            background: rgba(0,0,0,0.8);
+            transform: rotate(90deg);
+        }
+
+        .popup-close i {
+            color: white;
+            font-size: 18px;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        .img-hover {
+            overflow: hidden;
+        }
+
+        .img-hover img {
+            transition: transform 0.5s ease;
+        }
+
+        .img-hover:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            height: 8px;
+            background: #f0f0f0;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #e67e22, #d35400);
+            border-radius: 10px;
+            transition: width 1.5s ease;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .stat-number {
+                font-size: 36px;
+            }
+        }
+
+        /* Section */
+        .section {
+            padding: 80px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 50px 20px 70px;
+            }
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e67e22;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Hamburger Menu */
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .hamburger span {
+            width: 28px;
+            height: 3px;
+            background: #333;
+            border-radius: 3px;
+            transition: all 0.3s;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 350px;
+            height: 100%;
+            background: white;
+            z-index: 9999;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            box-shadow: -2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            right: 0;
+        }
+
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9998;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-heart text-white text-xl md:text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Hope & Impact</h1>
+                        <p class="text-xs md:text-sm text-gray-500">Changing Lives Together</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="#home" class="text-gray-700 hover:text-orange-500 font-medium transition">Home</a>
+                    <a href="#sponsor" class="text-gray-700 hover:text-orange-500 font-medium transition">Sponsor</a>
+                    <a href="#our-work" class="text-gray-700 hover:text-orange-500 font-medium transition">Our Work</a>
+                    <a href="#about" class="text-gray-700 hover:text-orange-500 font-medium transition">About</a>
+                    <a href="#news" class="text-gray-700 hover:text-orange-500 font-medium transition">News</a>
+                </nav>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex gap-3">
+                    <a href="donate.html" class="btn-primary">Donate Now</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay"></div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                        <i class="fas fa-heart text-white"></i>
+                    </div>
+                    <h2 class="text-lg font-bold text-gray-800">Hope & Impact</h2>
+                </div>
+                <button id="close-menu" class="text-gray-500 text-2xl">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <nav class="flex flex-col gap-2">
+                <a href="#home" class="mobile-menu-link p-4 text-gray-700 hover:bg-orange-50 hover:text-orange-500 rounded-lg font-medium transition">
+                    <i class="fas fa-home w-6 mr-3"></i> Home
+                </a>
+                <a href="#sponsor" class="mobile-menu-link p-4 text-gray-700 hover:bg-orange-50 hover:text-orange-500 rounded-lg font-medium transition">
+                    <i class="fas fa-child w-6 mr-3"></i> Sponsor a Child
+                </a>
+                <a href="#our-work" class="mobile-menu-link p-4 text-gray-700 hover:bg-orange-50 hover:text-orange-500 rounded-lg font-medium transition">
+                    <i class="fas fa-hands-helping w-6 mr-3"></i> What We Do
+                </a>
+                <a href="#about" class="mobile-menu-link p-4 text-gray-700 hover:bg-orange-50 hover:text-orange-500 rounded-lg font-medium transition">
+                    <i class="fas fa-users w-6 mr-3"></i> About Us
+                </a>
+                <a href="#news" class="mobile-menu-link p-4 text-gray-700 hover:bg-orange-50 hover:text-orange-500 rounded-lg font-medium transition">
+                    <i class="fas fa-newspaper w-6 mr-3"></i> News & Stories
+                </a>
+            </nav>
+
+            <div class="mt-8 space-y-3">
+                <a href="donate.html" class="btn-primary w-full text-center block">Donate Now</a>
+                <a href="#volunteer" class="block w-full text-center py-3 px-6 border-2 border-orange-500 text-orange-500 rounded-full font-semibold hover:bg-orange-50 transition">Volunteer</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section with Video -->
+    <section id="home" class="hero-section">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="/videos/video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="max-w-4xl mx-auto">
+                <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in-down">
+                    Sponsor a Child Today
+                </h1>
+                <p class="text-lg sm:text-xl md:text-2xl mb-10 opacity-95 animate-fade-in-up delay-200">
+                    And change a life with the gift of education
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4 animate-fade-in-up delay-400">
+                    <a href="#sponsor" class="btn-primary text-lg">Sponsor a Child Now</a>
+                    <a href="#learn" class="btn-secondary text-lg">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section scroll-animate">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Our Impact Since 1958</h2>
+                <p class="text-lg opacity-90">Transparency and efficiency in action</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="stat-number counter" data-target="95000">0</div>
+                    <p class="text-lg font-medium">Children Helped</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number counter" data-target="84">0</div>
+                    <p class="text-lg font-medium">% To Programs</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number counter" data-target="7">0</div>
+                    <p class="text-lg font-medium">Countries</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number counter" data-target="1000">0</div>
+                    <p class="text-lg font-medium">+ Volunteers</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section class="section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-8 md:mb-12 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Choose Us</h2>
+                <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                    Trusted by thousands of donors worldwide for our transparency and commitment
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                <!-- Highlight 1 -->
+                <div class="bg-white rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all scroll-animate text-center">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                        <i class="fas fa-shield-alt text-orange-600 text-xl md:text-3xl"></i>
+                    </div>
+                    <h3 class="text-sm md:text-lg font-bold text-gray-800 mb-2">100% Transparent</h3>
+                    <p class="text-xs md:text-sm text-gray-600">
+                        Full accountability on how your donations are used
+                    </p>
+                </div>
+
+                <!-- Highlight 2 -->
+                <div class="bg-white rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all scroll-animate text-center" style="animation-delay: 0.1s;">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                        <i class="fas fa-certificate text-blue-600 text-xl md:text-3xl"></i>
+                    </div>
+                    <h3 class="text-sm md:text-lg font-bold text-gray-800 mb-2">Certified NGO</h3>
+                    <p class="text-xs md:text-sm text-gray-600">
+                        Internationally recognized and accredited organization
+                    </p>
+                </div>
+
+                <!-- Highlight 3 -->
+                <div class="bg-white rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all scroll-animate text-center" style="animation-delay: 0.2s;">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                        <i class="fas fa-hand-holding-heart text-green-600 text-xl md:text-3xl"></i>
+                    </div>
+                    <h3 class="text-sm md:text-lg font-bold text-gray-800 mb-2">Direct Impact</h3>
+                    <p class="text-xs md:text-sm text-gray-600">
+                        Your support directly reaches children in need
+                    </p>
+                </div>
+
+                <!-- Highlight 4 -->
+                <div class="bg-white rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all scroll-animate text-center" style="animation-delay: 0.3s;">
+                    <div class="w-12 h-12 md:w-16 md:h-16 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-3 md:mb-4">
+                        <i class="fas fa-users text-purple-600 text-xl md:text-3xl"></i>
+                    </div>
+                    <h3 class="text-sm md:text-lg font-bold text-gray-800 mb-2">Strong Network</h3>
+                    <p class="text-xs md:text-sm text-gray-600">
+                        1000+ local volunteers ensuring quality programs
+                    </p>
+                </div>
+            </div>
+
+            <!-- Additional Highlights Row -->
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6 mt-4 md:mt-6">
+                <!-- Highlight 5 -->
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all scroll-animate" style="animation-delay: 0.4s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-orange-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-envelope text-white text-sm md:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm md:text-base font-bold text-gray-800 mb-1">Monthly Updates</h4>
+                            <p class="text-xs md:text-sm text-gray-600">
+                                Receive letters and photos from your sponsored child
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 6 -->
+                <div class="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all scroll-animate" style="animation-delay: 0.5s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-globe text-white text-sm md:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm md:text-base font-bold text-gray-800 mb-1">Global Reach</h4>
+                            <p class="text-xs md:text-sm text-gray-600">
+                                Operating in 7 countries across Southeast Asia
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Highlight 7 -->
+                <div class="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 md:p-6 shadow-md hover:shadow-xl transition-all scroll-animate col-span-2 md:col-span-1" style="animation-delay: 0.6s;">
+                    <div class="flex items-start gap-3">
+                        <div class="w-10 h-10 md:w-12 md:h-12 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fas fa-heart text-white text-sm md:text-lg"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-sm md:text-base font-bold text-gray-800 mb-1">Long-term Support</h4>
+                            <p class="text-xs md:text-sm text-gray-600">
+                                Follow children's progress throughout their education
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="our-work" class="section bg-gray-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">What We Do</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    We focus on providing education, healthcare, and nutrition to vulnerable children
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-8">
+                <div class="card scroll-animate">
+                    <div class="img-hover">
+                        <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=500" alt="Education" class="w-full h-48 md:h-64 object-cover">
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-blue-100 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                            <i class="fas fa-graduation-cap text-blue-600 text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="text-base md:text-xl font-bold mb-2 md:mb-3 text-gray-800">Education</h3>
+                        <p class="text-xs md:text-base text-gray-600 mb-3 md:mb-4">
+                            Quality education and school supplies to empower children
+                        </p>
+                        <a href="#" class="text-orange-500 text-xs md:text-sm font-semibold hover:text-orange-600">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="card scroll-animate" style="animation-delay: 0.2s;">
+                    <div class="img-hover">
+                        <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=500" alt="Healthcare" class="w-full h-48 md:h-64 object-cover">
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-green-100 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                            <i class="fas fa-heartbeat text-green-600 text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="text-base md:text-xl font-bold mb-2 md:mb-3 text-gray-800">Healthcare</h3>
+                        <p class="text-xs md:text-base text-gray-600 mb-3 md:mb-4">
+                            Essential medical care and clean water for healthy development
+                        </p>
+                        <a href="#" class="text-orange-500 text-xs md:text-sm font-semibold hover:text-orange-600">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="card scroll-animate col-span-2 md:col-span-1" style="animation-delay: 0.4s;">
+                    <div class="img-hover">
+                        <img src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=500" alt="Nutrition" class="w-full h-48 md:h-64 object-cover">
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <div class="w-12 h-12 md:w-14 md:h-14 bg-orange-100 rounded-full flex items-center justify-center mb-3 md:mb-4">
+                            <i class="fas fa-utensils text-orange-600 text-xl md:text-2xl"></i>
+                        </div>
+                        <h3 class="text-base md:text-xl font-bold mb-2 md:mb-3 text-gray-800">Nutrition</h3>
+                        <p class="text-xs md:text-base text-gray-600 mb-3 md:mb-4">
+                            Nutritious meals to end childhood hunger and malnutrition
+                        </p>
+                        <a href="#" class="text-orange-500 text-xs md:text-sm font-semibold hover:text-orange-600">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsorship Section -->
+    <section id="sponsor" class="section">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-12 scroll-animate">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Children Waiting to be Sponsored</h2>
+                <p class="text-lg text-gray-600">Meet the children who need your support today</p>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <div class="card scroll-animate">
+                    <div class="img-hover">
+                        <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=500" alt="Child" class="w-full h-48 md:h-72 object-cover">
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <span class="inline-block bg-orange-100 text-orange-600 text-xs font-semibold px-2 md:px-3 py-1 rounded-full mb-2 md:mb-3">Cambodia</span>
+                        <h3 class="text-sm md:text-xl font-bold mb-1 md:mb-2 text-gray-800">Support Children in Slums</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4">
+                            Give hope to children living in poverty
+                        </p>
+                        <div class="mb-3 md:mb-4">
+                            <div class="flex justify-between text-xs md:text-sm mb-2">
+                                <span class="text-gray-600">Sponsored</span>
+                                <span class="font-semibold text-orange-600">17/18</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="94" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-primary w-full text-center text-xs md:text-base py-2 md:py-4 px-4 md:px-8">Sponsor Now</a>
+                    </div>
+                </div>
+
+                <div class="card scroll-animate" style="animation-delay: 0.2s;">
+                    <div class="img-hover">
+                        <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=500" alt="Child" class="w-full h-48 md:h-72 object-cover">
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <span class="inline-block bg-blue-100 text-blue-600 text-xs font-semibold px-2 md:px-3 py-1 rounded-full mb-2 md:mb-3">Myanmar</span>
+                        <h3 class="text-sm md:text-xl font-bold mb-1 md:mb-2 text-gray-800">Education in Karen State</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4">
+                            Provide safe housing and education
+                        </p>
+                        <div class="mb-3 md:mb-4">
+                            <div class="flex justify-between text-xs md:text-sm mb-2">
+                                <span class="text-gray-600">Sponsored</span>
+                                <span class="font-semibold text-orange-600">17/20</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="85" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-primary w-full text-center text-xs md:text-base py-2 md:py-4 px-4 md:px-8">Sponsor Now</a>
+                    </div>
+                </div>
+
+                <div class="card scroll-animate col-span-2 lg:col-span-1" style="animation-delay: 0.4s;">
+                    <div class="img-hover">
+                        <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?w=500" alt="Child" class="w-full h-48 md:h-72 object-cover">
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <span class="inline-block bg-pink-100 text-pink-600 text-xs font-semibold px-2 md:px-3 py-1 rounded-full mb-2 md:mb-3">Vietnam</span>
+                        <h3 class="text-sm md:text-xl font-bold mb-1 md:mb-2 text-gray-800">Girls' Education Program</h3>
+                        <p class="text-xs md:text-sm text-gray-600 mb-3 md:mb-4">
+                            Support young girls to remain in education
+                        </p>
+                        <div class="mb-3 md:mb-4">
+                            <div class="flex justify-between text-xs md:text-sm mb-2">
+                                <span class="text-gray-600">Sponsored</span>
+                                <span class="font-semibold text-orange-600">7/15</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" data-progress="46" style="width: 0%"></div>
+                            </div>
+                        </div>
+                        <a href="#" class="btn-primary w-full text-center text-xs md:text-base py-2 md:py-4 px-4 md:px-8">Sponsor Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Story -->
+    <section id="about" class="section bg-gradient-to-br from-orange-50 to-orange-100">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <div class="img-hover rounded-2xl overflow-hidden shadow-xl scroll-animate order-1 md:order-1">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=800" alt="Success Story" class="w-full h-64 md:h-full object-cover">
+                </div>
+                <div class="scroll-animate order-2 md:order-2" style="animation-delay: 0.2s;">
+                    <span class="inline-block bg-orange-500 text-white text-xs md:text-sm font-semibold px-3 md:px-4 py-1 md:py-2 rounded-full mb-3 md:mb-4">
+                        SUCCESS STORY
+                    </span>
+                    <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-800 mb-4 md:mb-6">
+                        From Dropout to Top Student
+                    </h2>
+                    <p class="text-base md:text-lg text-gray-700 mb-4 md:mb-6 leading-relaxed">
+                        "At age 8, I had never been to school. Today, I'm top of my class and dream of becoming a doctor. Your support changed my life forever!"
+                    </p>
+                    <div class="space-y-2 md:space-y-3 mb-6 md:mb-8">
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <i class="fas fa-check-circle text-orange-500 text-lg md:text-xl"></i>
+                            <span class="text-sm md:text-base text-gray-700">5 years of quality education</span>
+                        </div>
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <i class="fas fa-check-circle text-orange-500 text-lg md:text-xl"></i>
+                            <span class="text-sm md:text-base text-gray-700">Daily nutritious meals</span>
+                        </div>
+                        <div class="flex items-center gap-2 md:gap-3">
+                            <i class="fas fa-check-circle text-orange-500 text-lg md:text-xl"></i>
+                            <span class="text-sm md:text-base text-gray-700">Regular health check-ups</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn-primary text-sm md:text-base">Read More Stories</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="section bg-gray-800 text-white">
+        <div class="max-w-4xl mx-auto text-center scroll-animate px-4">
+            <h2 class="text-2xl md:text-3xl lg:text-4xl font-bold mb-3 md:mb-4">Stay Connected</h2>
+            <p class="text-sm md:text-base lg:text-lg mb-6 md:mb-8 opacity-90">
+                Receive impact stories and updates from Southeast Asia
+            </p>
+            <form class="flex flex-col sm:flex-row gap-3 md:gap-4 max-w-md mx-auto">
+                <input type="email" placeholder="Your email address" class="flex-1 px-4 md:px-6 py-3 md:py-4 rounded-full text-sm md:text-base text-gray-800 focus:outline-none focus:ring-2 focus:ring-orange-500">
+                <button type="submit" class="btn-primary whitespace-nowrap text-sm md:text-base py-3 md:py-4">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-heart text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Hope & Impact</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Building brighter futures for children in Southeast Asia since 1958
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Our Work</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-orange-500 transition">Education Programs</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Healthcare Access</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Nutrition Support</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Emergency Relief</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Get Involved</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-orange-500 transition">Sponsor a Child</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Donate</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Volunteer</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Partner With Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-envelope text-orange-500 mt-1"></i>
+                            <span>info@hopeimpact.org</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-phone text-orange-500 mt-1"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-orange-500 mt-1"></i>
+                            <span>123 Charity Way, NY</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                <p>© 2024 Hope & Impact. All rights reserved. | <a href="#" class="hover:text-orange-500">Privacy Policy</a> | <a href="#" class="hover:text-orange-500">Terms</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="#home" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#sponsor" class="nav-item">
+            <i class="fas fa-child"></i>
+            <span>Sponsor</span>
+        </a>
+        <a href="donate.html" class="nav-item">
+            <i class="fas fa-heart"></i>
+            <span>Donate</span>
+        </a>
+        <a href="#our-work" class="nav-item">
+            <i class="fas fa-hands-helping"></i>
+            <span>Our Work</span>
+        </a>
+        <a href="#" id="menu-nav-item" class="nav-item">
+            <i class="fas fa-bars"></i>
+            <span>Menu</span>
+        </a>
+    </nav>
+
+    <!-- Popup Modal -->
+    <div id="popup-modal" class="popup-modal">
+        <div class="popup-content">
+            <div class="popup-close" id="close-popup">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" alt="Sponsor" class="w-full h-64 object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            </div>
+            <div class="p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-3">🎉 Special Offer!</h3>
+                <p class="text-gray-600 mb-6">
+                    Sponsor a child today and receive monthly updates with photos and letters. Your $32/month can change a life forever!
+                </p>
+                <div class="space-y-3">
+                    <a href="#sponsor" class="btn-primary w-full text-center block">Sponsor Now</a>
+                    <button id="remind-later" class="w-full py-3 text-gray-600 hover:text-gray-800 font-medium">Remind me later</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+                // Show popup after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('popup-modal').classList.add('active');
+                }, 3000);
+            }, 1000);
+        });
+
+        // Popup Modal
+        const popupModal = document.getElementById('popup-modal');
+        const closePopup = document.getElementById('close-popup');
+        const remindLater = document.getElementById('remind-later');
+
+        closePopup.addEventListener('click', () => {
+            popupModal.classList.remove('active');
+        });
+
+        remindLater.addEventListener('click', () => {
+            popupModal.classList.remove('active');
+        });
+
+        popupModal.addEventListener('click', (e) => {
+            if (e.target === popupModal) {
+                popupModal.classList.remove('active');
+            }
+        });
+
+        // Mobile Menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const menuNavItem = document.getElementById('menu-nav-item');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function openMenu() {
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        mobileMenuBtn.addEventListener('click', openMenu);
+        menuNavItem?.addEventListener('click', (e) => {
+            e.preventDefault();
+            openMenu();
+        });
+        closeMenuBtn.addEventListener('click', closeMenu);
+        mobileMenuOverlay.addEventListener('click', closeMenu);
+
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
+
+        // Bottom Nav Active State
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function(e) {
+                if (this.id !== 'menu-nav-item') {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = window.innerWidth < 768 ? 70 : 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        
+        const elementInView = (el, offset = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add('show');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 100)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
+
+        // Counter Animation
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const animateCounter = (counter) => {
+            const target = +counter.getAttribute('data-target');
+            const count = +counter.innerText;
+            const increment = target / speed;
+
+            if (count < target) {
+                counter.innerText = Math.ceil(count + increment);
+                setTimeout(() => animateCounter(counter), 1);
+            } else {
+                counter.innerText = target.toLocaleString();
+            }
+        };
+
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateCounter(entry.target);
+                    counterObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        counters.forEach(counter => counterObserver.observe(counter));
+
+        // Progress Bar Animation
+        const progressBars = document.querySelectorAll('.progress-fill');
+        
+        const progressObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const progress = entry.target.getAttribute('data-progress');
+                    setTimeout(() => {
+                        entry.target.style.width = progress + '%';
+                    }, 200);
+                    progressObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        progressBars.forEach(bar => progressObserver.observe(bar));
+    </script>
+</body>
+</html>

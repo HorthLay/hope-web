@@ -1,0 +1,1766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Donate - Hope & Impact</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* Header */
+        .main-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Hero Section */
+        .hero-donate {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero-donate {
+                padding: 60px 20px;
+            }
+
+            .hero-donate h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero-donate p {
+                font-size: 1.125rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .animate-fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .animate-scale-in {
+            animation: scaleIn 0.6s ease-out forwards;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+            opacity: 0;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+            opacity: 0;
+        }
+
+        .delay-600 {
+            animation-delay: 0.6s;
+            opacity: 0;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: #e67e22;
+            color: white;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #d35400;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(230, 126, 34, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .btn-primary, .btn-secondary {
+                padding: 14px 32px;
+                font-size: 15px;
+            }
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #e67e22;
+            padding: 16px 48px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            border: 2px solid #e67e22;
+            font-size: 16px;
+        }
+
+        .btn-secondary:hover {
+            background: #e67e22;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+        }
+
+        @media (max-width: 768px) {
+            .card {
+                border-radius: 10px;
+            }
+
+            .card.p-8 {
+                padding: 1.5rem !important;
+            }
+
+            .card.p-6 {
+                padding: 1.25rem !important;
+            }
+        }
+
+        /* Amount Selection */
+        .amount-option {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .amount-option input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .amount-option label {
+            display: block;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        @media (max-width: 768px) {
+            .amount-option label {
+                padding: 16px 12px;
+                font-size: 16px;
+            }
+
+            .amount-option label .text-2xl {
+                font-size: 1.5rem;
+            }
+
+            .amount-option label .text-xs {
+                font-size: 0.7rem;
+            }
+        }
+
+        .amount-option input[type="radio"]:checked + label {
+            border-color: #e67e22;
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d5 100%);
+            color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .amount-option label:hover {
+            border-color: #e67e22;
+        }
+
+        /* Custom Amount Input */
+        .custom-amount-input {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            font-size: 18px;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .custom-amount-input:focus {
+            outline: none;
+            border-color: #e67e22;
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d5 100%);
+        }
+
+        /* Donation Type Tabs */
+        .donation-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            background: #f5f5f5;
+            padding: 6px;
+            border-radius: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .donation-tabs {
+                gap: 6px;
+                padding: 4px;
+            }
+        }
+
+        .donation-tab {
+            flex: 1;
+            padding: 12px 24px;
+            border-radius: 50px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            background: transparent;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .donation-tab {
+                padding: 10px 16px;
+                font-size: 14px;
+            }
+        }
+
+        .donation-tab.active {
+            background: #e67e22;
+            color: white;
+            box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+        }
+
+        /* Impact Indicator */
+        .impact-box {
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d5 100%);
+            border-left: 4px solid #e67e22;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        /* Form Elements */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #e67e22;
+        }
+
+        .form-select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
+        }
+
+        .form-select:focus {
+            outline: none;
+            border-color: #e67e22;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            margin-top: 2px;
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .payment-methods {
+                gap: 8px;
+            }
+        }
+
+        .payment-method {
+            position: relative;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .payment-method {
+                flex: 1;
+                min-width: calc(50% - 4px);
+            }
+        }
+
+        .payment-method input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .payment-method label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .payment-method label {
+                padding: 12px 16px;
+                gap: 8px;
+                font-size: 14px;
+                justify-content: center;
+            }
+        }
+
+        .payment-method input[type="radio"]:checked + label {
+            border-color: #e67e22;
+            background: linear-gradient(135deg, #fff5eb 0%, #ffe8d5 100%);
+            color: #e67e22;
+        }
+
+        .payment-method label:hover {
+            border-color: #e67e22;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid #e67e22;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Mobile Bottom Navigation */
+        .mobile-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-bottom-nav {
+                display: flex;
+            }
+        }
+
+        .nav-item {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 8px;
+            color: #666;
+            text-decoration: none;
+            font-size: 11px;
+            transition: all 0.3s;
+        }
+
+        .nav-item i {
+            font-size: 22px;
+            margin-bottom: 4px;
+        }
+
+        .nav-item.active {
+            color: #e67e22;
+        }
+
+        /* Scroll Animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .scroll-animate.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section */
+        .section {
+            padding: 60px 20px;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 40px 20px 80px;
+            }
+        }
+
+        /* Trust Indicators */
+        .trust-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            background: #f0f0f0;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .trust-badge {
+                font-size: 11px;
+                padding: 6px 12px;
+                gap: 6px;
+            }
+
+            .trust-badge i {
+                font-size: 12px;
+            }
+        }
+
+        /* Progress Indicator */
+        .form-progress {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .form-progress {
+                margin-bottom: 25px;
+            }
+        }
+
+        .form-progress::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #e0e0e0;
+            z-index: 0;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .progress-step-circle {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin-bottom: 8px;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .progress-step-circle {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+                margin-bottom: 6px;
+            }
+
+            .form-progress::before {
+                top: 13px;
+            }
+        }
+
+        .progress-step.active .progress-step-circle {
+            background: #e67e22;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .progress-step.completed .progress-step-circle {
+            background: #2e7d32;
+            color: white;
+        }
+
+        .progress-step-label {
+            font-size: 12px;
+            font-weight: 600;
+            color: #999;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .progress-step-label {
+                font-size: 10px;
+            }
+        }
+
+        .progress-step.active .progress-step-label {
+            color: #e67e22;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: #2e7d32;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: scaleIn 0.5s ease-out;
+        }
+
+        .success-icon i {
+            font-size: 50px;
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+        }
+
+        /* QR Code Modal */
+        .qr-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .qr-modal {
+                padding: 10px;
+                align-items: flex-end;
+            }
+        }
+
+        .qr-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .qr-modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 450px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: transform 0.3s;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        @media (max-width: 768px) {
+            .qr-modal-content {
+                border-radius: 20px 20px 0 0;
+                max-height: 85vh;
+                transform: translateY(100%);
+            }
+
+            .qr-modal.active .qr-modal-content {
+                transform: translateY(0);
+            }
+        }
+
+        @media (min-width: 769px) {
+            .qr-modal.active .qr-modal-content {
+                transform: scale(1);
+            }
+        }
+
+        .qr-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 35px;
+            height: 35px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s;
+        }
+
+        @media (max-width: 768px) {
+            .qr-modal-close {
+                background: rgba(255,255,255,0.9);
+            }
+
+            .qr-modal-close i {
+                color: #333;
+            }
+        }
+
+        .qr-modal-close:hover {
+            background: rgba(0,0,0,0.8);
+            transform: rotate(90deg);
+        }
+
+        @media (max-width: 768px) {
+            .qr-modal-close:hover {
+                background: rgba(255,255,255,1);
+            }
+
+            .qr-modal-close:hover i {
+                color: #e67e22;
+            }
+        }
+
+        .qr-modal-close i {
+            color: white;
+            font-size: 18px;
+        }
+
+        .qr-modal-header {
+            background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .qr-modal-header {
+                padding: 25px 20px;
+            }
+
+            .qr-modal-header h3 {
+                font-size: 1.5rem;
+            }
+
+            .qr-modal-header i {
+                font-size: 2.5rem !important;
+            }
+        }
+
+        .qr-modal-body {
+            padding: 40px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .qr-modal-body {
+                padding: 30px 20px;
+            }
+        }
+
+        .qr-code-container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .qr-code-container {
+                padding: 15px;
+                margin-bottom: 15px;
+            }
+        }
+
+        .qr-code-container img {
+            width: 250px;
+            height: 250px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .qr-code-container img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .qr-code-container img {
+                width: 180px;
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6">
+            <div class="flex items-center justify-between h-16 md:h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center gap-3">
+                    <div class="w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center shadow-lg">
+                        <i class="fas fa-heart text-white text-xl md:text-2xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-xl md:text-2xl font-bold text-gray-800">Hope & Impact</h1>
+                        <p class="text-xs md:text-sm text-gray-500">Changing Lives Together</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden lg:flex items-center gap-8">
+                    <a href="index.html#home" class="text-gray-700 hover:text-orange-500 font-medium transition">Home</a>
+                    <a href="index.html#sponsor" class="text-gray-700 hover:text-orange-500 font-medium transition">Sponsor</a>
+                    <a href="index.html#our-work" class="text-gray-700 hover:text-orange-500 font-medium transition">Our Work</a>
+                    <a href="index.html#about" class="text-gray-700 hover:text-orange-500 font-medium transition">About</a>
+                </nav>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex gap-3">
+                    <a href="#donate-form" class="btn-primary">Donate Now</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-donate">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-bold mb-4 animate-fade-in-up">Make a Difference Today</h1>
+            <p class="text-xl md:text-2xl mb-6 opacity-90 animate-fade-in-up delay-200">Your generosity changes lives and builds brighter futures for children in need</p>
+            <div class="flex flex-wrap justify-center gap-4 animate-fade-in-up delay-400">
+                <div class="trust-badge">
+                    <i class="fas fa-shield-alt text-green-500"></i>
+                    Secure Donation
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-certificate text-blue-500"></i>
+                    100% Tax Deductible
+                </div>
+                <div class="trust-badge">
+                    <i class="fas fa-check-circle text-green-500"></i>
+                    Verified Charity
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Donation Form -->
+    <main class="section">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Left Column - Donation Form -->
+                <div class="lg:col-span-2">
+                    <div id="donation-form-card" class="card p-8 animate-fade-in-left">
+                        <!-- Progress Indicator -->
+                        <div class="form-progress mb-8">
+                            <div class="progress-step active" data-step="1">
+                                <div class="progress-step-circle">1</div>
+                                <span class="progress-step-label">Amount</span>
+                            </div>
+                            <div class="progress-step" data-step="2">
+                                <div class="progress-step-circle">2</div>
+                                <span class="progress-step-label">Details</span>
+                            </div>
+                            <div class="progress-step" data-step="3">
+                                <div class="progress-step-circle">3</div>
+                                <span class="progress-step-label">Payment</span>
+                            </div>
+                        </div>
+
+                        <!-- Step 1: Amount Selection -->
+                        <div id="step-1" class="form-step">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-4">Choose Your Donation Amount</h2>
+                            
+                            <!-- Donation Type Tabs -->
+                            <div class="donation-tabs">
+                                <button class="donation-tab active" data-type="one-time">One-Time</button>
+                                <button class="donation-tab" data-type="monthly">Monthly</button>
+                            </div>
+
+                            <!-- Amount Options -->
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-4">
+                                <div class="amount-option">
+                                    <input type="radio" name="amount" id="amount-25" value="25">
+                                    <label for="amount-25">
+                                        <div class="text-2xl font-bold mb-1">$25</div>
+                                        <div class="text-xs text-gray-600">Provides school supplies</div>
+                                    </label>
+                                </div>
+                                <div class="amount-option">
+                                    <input type="radio" name="amount" id="amount-50" value="50">
+                                    <label for="amount-50">
+                                        <div class="text-2xl font-bold mb-1">$50</div>
+                                        <div class="text-xs text-gray-600">Feeds 5 children</div>
+                                    </label>
+                                </div>
+                                <div class="amount-option">
+                                    <input type="radio" name="amount" id="amount-100" value="100" checked>
+                                    <label for="amount-100">
+                                        <div class="text-2xl font-bold mb-1">$100</div>
+                                        <div class="text-xs text-gray-600">Medical care for 10</div>
+                                    </label>
+                                </div>
+                                <div class="amount-option">
+                                    <input type="radio" name="amount" id="amount-250" value="250">
+                                    <label for="amount-250">
+                                        <div class="text-2xl font-bold mb-1">$250</div>
+                                        <div class="text-xs text-gray-600">Supports a classroom</div>
+                                    </label>
+                                </div>
+                                <div class="amount-option">
+                                    <input type="radio" name="amount" id="amount-500" value="500">
+                                    <label for="amount-500">
+                                        <div class="text-2xl font-bold mb-1">$500</div>
+                                        <div class="text-xs text-gray-600">Builds clean water</div>
+                                    </label>
+                                </div>
+                                <div class="amount-option">
+                                    <input type="radio" name="amount" id="amount-custom" value="custom">
+                                    <label for="amount-custom">
+                                        <div class="text-2xl font-bold mb-1">Other</div>
+                                        <div class="text-xs text-gray-600">Custom amount</div>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- Custom Amount Input -->
+                            <div id="custom-amount-container" style="display: none;">
+                                <input type="number" id="custom-amount" class="custom-amount-input" placeholder="Enter custom amount ($)" min="1">
+                            </div>
+
+                            <!-- Impact Indicator -->
+                            <div class="impact-box">
+                                <div class="flex items-start gap-3">
+                                    <i class="fas fa-hand-holding-heart text-orange-500 text-2xl mt-1"></i>
+                                    <div>
+                                        <h4 class="font-bold text-gray-800 mb-2">Your Impact</h4>
+                                        <p id="impact-text" class="text-gray-700">Your $100 donation can provide medical care and health checkups for 10 children in need.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Designation -->
+                            <div class="form-group mt-6">
+                                <label class="form-label">Where should your donation help most?</label>
+                                <select class="form-select">
+                                    <option>Where needed most</option>
+                                    <option>Education Programs</option>
+                                    <option>Healthcare & Nutrition</option>
+                                    <option>Emergency Relief</option>
+                                    <option>Clean Water Projects</option>
+                                    <option>Child Protection</option>
+                                </select>
+                            </div>
+
+                            <button onclick="goToStep(2)" class="btn-primary w-full mt-6">Continue to Details</button>
+                        </div>
+
+                        <!-- Step 2: Personal Details -->
+                        <div id="step-2" class="form-step" style="display: none;">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-4">Your Information</h2>
+                            
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">First Name *</label>
+                                    <input type="text" class="form-input" placeholder="John" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Last Name *</label>
+                                    <input type="text" class="form-input" placeholder="Doe" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" class="form-input" placeholder="john.doe@example.com" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" placeholder="+1 (555) 123-4567">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Address</label>
+                                <input type="text" class="form-input" placeholder="123 Main Street">
+                            </div>
+
+                            <div class="grid sm:grid-cols-3 gap-4">
+                                <div class="form-group">
+                                    <label class="form-label">City</label>
+                                    <input type="text" class="form-input" placeholder="New York">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">State</label>
+                                    <input type="text" class="form-input" placeholder="NY">
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">ZIP Code</label>
+                                    <input type="text" class="form-input" placeholder="10001">
+                                </div>
+                            </div>
+
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="anonymous" checked>
+                                <label for="anonymous" class="text-sm text-gray-700">I want to receive email updates about the impact of my donation</label>
+                            </div>
+
+                            <div class="form-checkbox">
+                                <input type="checkbox" id="honor">
+                                <label for="honor" class="text-sm text-gray-700">This donation is in honor or memory of someone</label>
+                            </div>
+
+                            <div class="flex gap-4 mt-6">
+                                <button onclick="goToStep(1)" class="btn-secondary flex-1">Back</button>
+                                <button onclick="goToStep(3)" class="btn-primary flex-1">Continue to Payment</button>
+                            </div>
+                        </div>
+
+                        <!-- Step 3: Payment -->
+                        <div id="step-3" class="form-step" style="display: none;">
+                            <h2 class="text-2xl font-bold text-gray-800 mb-4">Payment Information</h2>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Payment Method</label>
+                                <div class="payment-methods">
+                                    <div class="payment-method">
+                                        <input type="radio" name="payment" id="card" value="card" checked>
+                                        <label for="card">
+                                            <i class="fas fa-credit-card"></i>
+                                            Credit Card
+                                        </label>
+                                    </div>
+                                    <div class="payment-method">
+                                        <input type="radio" name="payment" id="paypal" value="paypal">
+                                        <label for="paypal">
+                                            <i class="fab fa-paypal"></i>
+                                            PayPal
+                                        </label>
+                                    </div>
+                                    <div class="payment-method">
+                                        <input type="radio" name="payment" id="bank" value="bank">
+                                        <label for="bank">
+                                            <i class="fas fa-university"></i>
+                                            Bank Transfer
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="card-details">
+                                <div class="form-group">
+                                    <label class="form-label">Card Number *</label>
+                                    <input type="text" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19">
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Cardholder Name *</label>
+                                    <input type="text" class="form-input" placeholder="John Doe">
+                                </div>
+
+                                <div class="grid grid-cols-2 gap-4">
+                                    <div class="form-group">
+                                        <label class="form-label">Expiry Date *</label>
+                                        <input type="text" class="form-input" placeholder="MM/YY" maxlength="5">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">CVV *</label>
+                                        <input type="text" class="form-input" placeholder="123" maxlength="4">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                                <div class="flex items-center gap-2 mb-2">
+                                    <i class="fas fa-lock text-gray-600"></i>
+                                    <span class="font-bold text-gray-800">Secure Payment</span>
+                                </div>
+                                <p class="text-sm text-gray-600">Your payment information is encrypted and secure. We never store your credit card details.</p>
+                            </div>
+
+                            <div class="form-checkbox mb-6">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms" class="text-sm text-gray-700">I agree to the <a href="#" class="text-orange-500 hover:text-orange-600">Terms of Service</a> and <a href="#" class="text-orange-500 hover:text-orange-600">Privacy Policy</a></label>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <button onclick="goToStep(2)" class="btn-secondary flex-1">Back</button>
+                                <button onclick="completeDonation()" class="btn-primary flex-1">
+                                    <i class="fas fa-heart mr-2"></i>Complete Donation
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div id="success-message" class="card p-8 success-message">
+                        <div class="success-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h2 class="text-3xl font-bold text-gray-800 mb-4">Thank You for Your Generosity!</h2>
+                        <p class="text-xl text-gray-600 mb-6">Your donation of <span id="final-amount" class="font-bold text-orange-500">$100</span> has been received.</p>
+                        <p class="text-gray-700 mb-6">A confirmation email with your tax receipt has been sent to your email address. Your generosity will directly help children in need and create lasting positive change in their communities.</p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <a href="index.html" class="btn-primary">Return Home</a>
+                            <button onclick="resetForm()" class="btn-secondary">Make Another Donation</button>
+                        </div>
+                    </div>
+
+                    <!-- Ways to Give -->
+                    <div class="mt-8 scroll-animate">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-6">Other Ways to Give</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                            <div class="card p-6 text-center">
+                                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-mobile-alt text-orange-500 text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">Text to Donate</h4>
+                                <p class="text-sm text-gray-600 mb-4">Text HOPE to 12345 to donate $10</p>
+                                <a href="#" class="text-orange-500 font-medium text-sm hover:text-orange-600">Learn More →</a>
+                            </div>
+
+                            <div class="card p-6 text-center">
+                                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fab fa-telegram text-orange-500 text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">Telegram</h4>
+                                <p class="text-sm text-gray-600 mb-4">Scan QR code to donate via Telegram</p>
+                                <button onclick="showQRModal('telegram')" class="text-orange-500 font-medium text-sm hover:text-orange-600">View QR Code →</button>
+                            </div>
+
+                            <div class="card p-6 text-center">
+                                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-qrcode text-orange-500 text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">ABA Bank</h4>
+                                <p class="text-sm text-gray-600 mb-4">Scan QR code to donate via ABA</p>
+                                <button onclick="showQRModal('aba')" class="text-orange-500 font-medium text-sm hover:text-orange-600">View QR Code →</button>
+                            </div>
+
+                            <div class="card p-6 text-center">
+                                <div class="w-16 h-16 bg-orange-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                    <i class="fas fa-phone text-orange-500 text-2xl"></i>
+                                </div>
+                                <h4 class="font-bold text-gray-800 mb-2">Call to Donate</h4>
+                                <p class="text-sm text-gray-600 mb-4">Speak with our team</p>
+                                <a href="tel:+15551234567" class="text-orange-500 font-medium text-sm hover:text-orange-600">+1 (555) 123-4567 →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Summary & Info -->
+                <div class="lg:col-span-1">
+                    <!-- Donation Summary -->
+                    <div class="card p-6 mb-6 animate-fade-in-right lg:sticky lg:top-24">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Donation Summary</h3>
+                        
+                        <div class="space-y-4 mb-6">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Donation Type:</span>
+                                <span id="summary-type" class="font-bold text-gray-800">One-Time</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">Amount:</span>
+                                <span id="summary-amount" class="font-bold text-2xl text-orange-500">$100</span>
+                            </div>
+                            <div class="flex justify-between items-center text-sm">
+                                <span class="text-gray-600">Processing Fee:</span>
+                                <span class="text-gray-600">$0 (covered by us)</span>
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-4 mb-6">
+                            <div class="flex justify-between items-center">
+                                <span class="font-bold text-gray-800">Total:</span>
+                                <span id="summary-total" class="font-bold text-2xl text-orange-500">$100</span>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-50 p-4 rounded-lg">
+                            <div class="flex items-start gap-2">
+                                <i class="fas fa-info-circle text-orange-500 mt-1"></i>
+                                <p class="text-sm text-gray-700">
+                                    <strong>Tax Deductible:</strong> Your donation is 100% tax-deductible. Receipt will be emailed immediately.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Why Donate -->
+                    <div class="card p-6 mb-6 scroll-animate">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Why Donate?</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Transparent Impact</h4>
+                                    <p class="text-xs text-gray-600">See exactly where your money goes</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Proven Results</h4>
+                                    <p class="text-xs text-gray-600">65+ years of changing lives</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Low Overhead</h4>
+                                    <p class="text-xs text-gray-600">90% goes directly to programs</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                                <div>
+                                    <h4 class="font-bold text-gray-800 text-sm mb-1">Global Reach</h4>
+                                    <p class="text-xs text-gray-600">Serving 15 countries worldwide</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Donors -->
+                    <div class="card p-6 scroll-animate">
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Recent Donors</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-orange-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-sm text-gray-800">Sarah M.</p>
+                                    <p class="text-xs text-gray-600">Donated $50 • 5 min ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-orange-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-sm text-gray-800">Michael R.</p>
+                                    <p class="text-xs text-gray-600">Donated $100 • 12 min ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-orange-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-sm text-gray-800">Jessica L.</p>
+                                    <p class="text-xs text-gray-600">Donated $25 • 28 min ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 bg-orange-100 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-user text-orange-500"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-bold text-sm text-gray-800">Anonymous</p>
+                                    <p class="text-xs text-gray-600">Donated $250 • 1 hour ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ Section -->
+    <section class="section bg-white">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 text-center mb-12 scroll-animate">Frequently Asked Questions</h2>
+            <div class="space-y-4">
+                <div class="card p-6 scroll-animate">
+                    <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-question-circle text-orange-500"></i>
+                        Is my donation tax-deductible?
+                    </h3>
+                    <p class="text-gray-600 text-sm pl-7">Yes! Hope & Impact is a registered 501(c)(3) nonprofit organization. All donations are 100% tax-deductible to the extent allowed by law. You'll receive an email receipt immediately after your donation.</p>
+                </div>
+
+                <div class="card p-6 scroll-animate">
+                    <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-question-circle text-orange-500"></i>
+                        How is my donation used?
+                    </h3>
+                    <p class="text-gray-600 text-sm pl-7">90% of every donation goes directly to our programs, with 10% covering essential administrative and fundraising costs. You can choose specific programs or allow us to allocate funds where they're needed most.</p>
+                </div>
+
+                <div class="card p-6 scroll-animate">
+                    <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-question-circle text-orange-500"></i>
+                        Can I cancel my monthly donation?
+                    </h3>
+                    <p class="text-gray-600 text-sm pl-7">Yes, you can cancel your monthly donation at any time by contacting us or logging into your donor account. There are no penalties or fees for cancellation.</p>
+                </div>
+
+                <div class="card p-6 scroll-animate">
+                    <h3 class="font-bold text-gray-800 mb-2 flex items-center gap-2">
+                        <i class="fas fa-question-circle text-orange-500"></i>
+                        Will I receive updates about my impact?
+                    </h3>
+                    <p class="text-gray-600 text-sm pl-7">Absolutely! We'll send you quarterly impact reports with stories, photos, and statistics showing how your donation is making a difference. You can opt out of these updates at any time.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code Modal -->
+    <div id="qr-modal" class="qr-modal">
+        <div class="qr-modal-content">
+            <div class="qr-modal-close" onclick="closeQRModal()">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="qr-modal-header">
+                <i id="qr-modal-icon" class="fas fa-qrcode text-5xl mb-3"></i>
+                <h3 id="qr-modal-title" class="text-2xl font-bold">Scan QR Code</h3>
+                <p id="qr-modal-subtitle" class="text-sm opacity-90 mt-2">Scan to donate via Telegram</p>
+            </div>
+            <div class="qr-modal-body">
+                <div class="qr-code-container">
+                    <img id="qr-code-image" src="" alt="QR Code">
+                </div>
+                <p class="text-gray-600 text-sm mb-4">Open your camera or payment app and scan this QR code to make your donation</p>
+                <div class="bg-orange-50 p-4 rounded-lg">
+                    <p class="text-sm text-gray-700">
+                        <i class="fas fa-info-circle text-orange-500 mr-2"></i>
+                        After scanning, you'll be redirected to complete your donation securely.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="py-12 px-4">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-10 h-10 bg-gradient-to-br from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
+                            <i class="fas fa-heart text-white"></i>
+                        </div>
+                        <h3 class="text-xl font-bold">Hope & Impact</h3>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">
+                        Building brighter futures for children in Southeast Asia since 1958
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center hover:bg-orange-500 transition">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Our Work</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-orange-500 transition">Education Programs</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Healthcare Access</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Nutrition Support</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Emergency Relief</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Get Involved</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="#" class="hover:text-orange-500 transition">Sponsor a Child</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Donate</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Volunteer</a></li>
+                        <li><a href="#" class="hover:text-orange-500 transition">Partner With Us</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-4">Contact</h4>
+                    <ul class="space-y-3 text-sm text-gray-400">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-envelope text-orange-500 mt-1"></i>
+                            <span>info@hopeimpact.org</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-phone text-orange-500 mt-1"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-map-marker-alt text-orange-500 mt-1"></i>
+                            <span>123 Charity Way, NY</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                <p>© 2024 Hope & Impact. All rights reserved. | <a href="#" class="hover:text-orange-500">Privacy Policy</a> | <a href="#" class="hover:text-orange-500">Terms</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+        <a href="index.html#home" class="nav-item">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="index.html#sponsor" class="nav-item">
+            <i class="fas fa-child"></i>
+            <span>Sponsor</span>
+        </a>
+        <a href="#donate-form" class="nav-item active">
+            <i class="fas fa-heart"></i>
+            <span>Donate</span>
+        </a>
+        <a href="index.html#our-work" class="nav-item">
+            <i class="fas fa-hands-helping"></i>
+            <span>Our Work</span>
+        </a>
+    </nav>
+
+    <!-- Scripts -->
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loader').classList.add('hidden');
+            }, 800);
+        });
+
+        // Impact Messages
+        const impactMessages = {
+            '25': 'Your $25 donation can provide essential school supplies for 3 children, including notebooks, pencils, and textbooks.',
+            '50': 'Your $50 donation can provide nutritious meals for 5 children for an entire week.',
+            '100': 'Your $100 donation can provide medical care and health checkups for 10 children in need.',
+            '250': 'Your $250 donation can support an entire classroom with educational materials and teacher training.',
+            '500': 'Your $500 donation can help build clean water infrastructure serving an entire community.',
+            'custom': 'Your generous donation will make a significant impact on children\'s lives and their communities.'
+        };
+
+        // Amount Selection
+        const amountOptions = document.querySelectorAll('input[name="amount"]');
+        const customAmountContainer = document.getElementById('custom-amount-container');
+        const customAmountInput = document.getElementById('custom-amount');
+        const impactText = document.getElementById('impact-text');
+        const summaryAmount = document.getElementById('summary-amount');
+        const summaryTotal = document.getElementById('summary-total');
+
+        amountOptions.forEach(option => {
+            option.addEventListener('change', function() {
+                const value = this.value;
+                
+                if (value === 'custom') {
+                    customAmountContainer.style.display = 'block';
+                    customAmountInput.focus();
+                } else {
+                    customAmountContainer.style.display = 'none';
+                    updateSummary(value);
+                    updateImpact(value);
+                }
+            });
+        });
+
+        customAmountInput.addEventListener('input', function() {
+            const value = this.value || '0';
+            updateSummary(value);
+            updateImpact('custom');
+        });
+
+        function updateSummary(amount) {
+            summaryAmount.textContent = '$' + amount;
+            summaryTotal.textContent = '$' + amount;
+        }
+
+        function updateImpact(amount) {
+            impactText.textContent = impactMessages[amount] || impactMessages['custom'];
+        }
+
+        // Donation Type Tabs
+        const donationTabs = document.querySelectorAll('.donation-tab');
+        const summaryType = document.getElementById('summary-type');
+
+        donationTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                donationTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                const type = this.dataset.type;
+                summaryType.textContent = type === 'one-time' ? 'One-Time' : 'Monthly';
+            });
+        });
+
+        // Multi-Step Form
+        let currentStep = 1;
+
+        function goToStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.form-step').forEach(s => s.style.display = 'none');
+            
+            // Show selected step
+            document.getElementById('step-' + step).style.display = 'block';
+            
+            // Update progress
+            document.querySelectorAll('.progress-step').forEach((s, index) => {
+                s.classList.remove('active', 'completed');
+                if (index + 1 === step) {
+                    s.classList.add('active');
+                } else if (index + 1 < step) {
+                    s.classList.add('completed');
+                }
+            });
+            
+            currentStep = step;
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Complete Donation
+        function completeDonation() {
+            // Get final amount
+            const selectedAmount = document.querySelector('input[name="amount"]:checked');
+            let finalAmount = selectedAmount.value;
+            
+            if (finalAmount === 'custom') {
+                finalAmount = customAmountInput.value || '0';
+            }
+            
+            // Update final amount display
+            document.getElementById('final-amount').textContent = '$' + finalAmount;
+            
+            // Hide form, show success
+            document.getElementById('donation-form-card').style.display = 'none';
+            document.getElementById('success-message').classList.add('show');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Reset Form
+        function resetForm() {
+            document.getElementById('donation-form-card').style.display = 'block';
+            document.getElementById('success-message').classList.remove('show');
+            goToStep(1);
+        }
+
+        // Scroll Animations
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        
+        const elementInView = (el, offset = 100) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return (
+                elementTop <= (window.innerHeight || document.documentElement.clientHeight) - offset
+            );
+        };
+
+        const displayScrollElement = (element) => {
+            element.classList.add('show');
+        };
+
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 100)) {
+                    displayScrollElement(el);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', handleScrollAnimation);
+        handleScrollAnimation();
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = window.innerWidth < 768 ? 70 : 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Bottom Nav Active State
+        const navItems = document.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                navItems.forEach(nav => nav.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Card Number Formatting
+        const cardInput = document.querySelector('input[placeholder="1234 5678 9012 3456"]');
+        if (cardInput) {
+            cardInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\s/g, '');
+                let formattedValue = value.match(/.{1,4}/g)?.join(' ') || value;
+                e.target.value = formattedValue;
+            });
+        }
+
+        // Expiry Date Formatting
+        const expiryInput = document.querySelector('input[placeholder="MM/YY"]');
+        if (expiryInput) {
+            expiryInput.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length >= 2) {
+                    value = value.slice(0, 2) + '/' + value.slice(2, 4);
+                }
+                e.target.value = value;
+            });
+        }
+
+        // QR Code Modal
+        function showQRModal(type) {
+            const modal = document.getElementById('qr-modal');
+            const title = document.getElementById('qr-modal-title');
+            const subtitle = document.getElementById('qr-modal-subtitle');
+            const icon = document.getElementById('qr-modal-icon');
+            const qrImage = document.getElementById('qr-code-image');
+
+            if (type === 'telegram') {
+                title.textContent = 'Donate via Telegram';
+                subtitle.textContent = 'Scan with your phone to donate through Telegram';
+                icon.className = 'fab fa-telegram text-5xl mb-3';
+                qrImage.src = 'images/telegram-qr.png';
+                qrImage.alt = 'Telegram QR Code';
+            } else if (type === 'aba') {
+                title.textContent = 'Donate via ABA Bank';
+                subtitle.textContent = 'Scan with ABA Mobile app to donate';
+                icon.className = 'fas fa-university text-5xl mb-3';
+                qrImage.src = 'images/aba-qr.png';
+                qrImage.alt = 'ABA Bank QR Code';
+            }
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeQRModal() {
+            const modal = document.getElementById('qr-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close QR modal on click outside
+        document.getElementById('qr-modal')?.addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeQRModal();
+            }
+        });
+
+        // ESC key to close QR modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeQRModal();
+            }
+        });
+    </script>
+</body>
+</html>
